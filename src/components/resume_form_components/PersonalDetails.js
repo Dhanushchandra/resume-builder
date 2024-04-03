@@ -1,4 +1,30 @@
+import { useEffect, useState } from "react";
+
 const Personal = ({ personal, setPersonal, handleNext }) => {
+  const [imageUrl, setImageUrl] = useState("");
+
+  const handleImageChange = (e) => {
+    if (e.target.files.length > 0) {
+      const file = e.target.files[0];
+
+      setPersonal((prev) => ({
+        ...prev,
+        image: file,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    // Create an object URL for the file
+    if (personal.image) {
+      const url = URL.createObjectURL(personal.image);
+      setImageUrl(url);
+
+      // Clean up the object URL on unmount
+      return () => URL.revokeObjectURL(url);
+    }
+  }, [personal.image]);
+
   return (
     <div
       style={{
@@ -9,6 +35,15 @@ const Personal = ({ personal, setPersonal, handleNext }) => {
         borderRadius: "10px",
       }}
     >
+      <img
+        style={{
+          display: imageUrl ? "block" : "none",
+        }}
+        src={imageUrl}
+        alt="Failed"
+        width={100}
+        height={100}
+      />
       <h3 className="text-center">Personal Details</h3>
       <div className="form-group">
         <label>Name:</label>
@@ -96,6 +131,17 @@ const Personal = ({ personal, setPersonal, handleNext }) => {
           defaultValue={personal.address}
         ></textarea>
         <br></br>
+
+        <label>Profile Image:</label>
+        <input
+          type="file"
+          className="form-control"
+          onChange={handleImageChange}
+          accept="image/*"
+        />
+
+        <br></br>
+
         <div
           style={{
             display: "flex",

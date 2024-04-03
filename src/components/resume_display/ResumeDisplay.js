@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./resumedisplay.css";
 
 const ResumeDisplay = ({
@@ -9,13 +10,25 @@ const ResumeDisplay = ({
   education,
   certifications,
 }) => {
+  const [imageUrl, setImageUrl] = useState("");
+
   const handlePrint = () => {
     window.print();
   };
 
+  useEffect(() => {
+    // Create an object URL for the file
+    if (personal.image) {
+      const url = URL.createObjectURL(personal.image);
+      setImageUrl(url);
+
+      // Clean up the object URL on unmount
+      return () => URL.revokeObjectURL(url);
+    }
+  }, [personal.image]);
+
   return (
     <div>
-      <h1 className="text-center">Resume</h1>
       <div
         className="print-container"
         style={{
@@ -34,7 +47,22 @@ const ResumeDisplay = ({
         >
           {/* Personal Details */}
           <div className="row">
-            <h1>{personal.name}</h1>
+            <div className="row">
+              <div className="col-10">
+                <h1>{personal.name}</h1>
+              </div>
+              <div className="col-2">
+                <img
+                  src={imageUrl}
+                  alt={personal.name}
+                  width={100}
+                  height={100}
+                  style={{
+                    borderRadius: "50px",
+                  }}
+                />
+              </div>
+            </div>
             <div className="row">
               <div className="col">
                 {personal.phone} | {personal.email}
@@ -78,7 +106,7 @@ const ResumeDisplay = ({
             <h6>ACHIEVEMENTS</h6>
             <div className="col">
               {achievements.map((achiev, index) => (
-                <p key={index}>{achiev}</p>
+                <pre key={index}>{achiev}</pre>
               ))}
             </div>
           </div>
@@ -88,7 +116,7 @@ const ResumeDisplay = ({
             <h6>PROJECTS</h6>
             <div className="col">
               {projects.map((project, index) => (
-                <p key={index}>{project}</p>
+                <pre key={index}>{project}</pre>
               ))}
             </div>
           </div>
@@ -98,7 +126,7 @@ const ResumeDisplay = ({
             <h6>EDUCATION</h6>
             <div className="col">
               {education.map((edu, index) => (
-                <p key={index}>{edu}</p>
+                <pre key={index}>{edu}</pre>
               ))}
             </div>
           </div>
@@ -108,7 +136,7 @@ const ResumeDisplay = ({
             <h6>CERTIFICATION</h6>
             <div className="col">
               {certifications.map((certi, index) => (
-                <p key={index}>{certi}</p>
+                <pre key={index}>{certi}</pre>
               ))}
             </div>
           </div>
