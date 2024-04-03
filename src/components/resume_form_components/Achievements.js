@@ -16,6 +16,7 @@ const Achievements = ({
             rows={5}
             cols={50}
             onBlur={(e) => handleBlur(index, e.target.value, setAchievements)}
+            defaultValue={achievements[index]}
           />
           <button onClick={() => handleRemoveItem(index, setAchievements)}>
             Remove

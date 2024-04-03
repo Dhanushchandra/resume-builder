@@ -63,13 +63,18 @@ const ResumeForm2 = () => {
       case 1:
         return (
           <>
-            <Personal setPersonal={setPersonal} handleNext={handleNext} />
+            <Personal
+              personal={personal}
+              setPersonal={setPersonal}
+              handleNext={handleNext}
+            />
           </>
         );
       case 2:
         return (
           <>
             <Profile
+              profile={profile}
               setProfile={setProfile}
               handleBack={handleBack}
               handleNext={handleNext}

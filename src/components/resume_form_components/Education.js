@@ -16,6 +16,7 @@ const Education = ({
             rows={5}
             cols={50}
             onBlur={(e) => handleBlur(index, e.target.value, setEducation)}
+            defaultValue={education[index]}
           ></textarea>
           <button onClick={() => handleRemoveItem(index, setEducation)}>
             Remove

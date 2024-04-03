@@ -18,6 +18,7 @@ const Certification = ({
             onBlur={(e) => {
               handleBlur(index, e.target.value, setCertifications);
             }}
+            defaultValue={certifications[index]}
           ></textarea>
           <button onClick={() => handleRemoveItem(index, setCertifications)}>
             Remove

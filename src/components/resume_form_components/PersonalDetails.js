@@ -1,4 +1,4 @@
-const Personal = ({ setPersonal, handleNext }) => {
+const Personal = ({ personal, setPersonal, handleNext }) => {
   return (
     <>
       <h3>Personal Details</h3>
@@ -11,6 +11,7 @@ const Personal = ({ setPersonal, handleNext }) => {
             name: e.target.value,
           }))
         }
+        defaultValue={personal.name}
       />
       <br></br>
       <label>Phone:</label>
@@ -22,6 +23,7 @@ const Personal = ({ setPersonal, handleNext }) => {
             phone: e.target.value,
           }))
         }
+        defaultValue={personal.phone}
       />
       <br></br>
       <label>Email:</label>
@@ -33,6 +35,7 @@ const Personal = ({ setPersonal, handleNext }) => {
             email: e.target.value,
           }))
         }
+        defaultValue={personal.email}
       />
       <br></br>
       <label>Linked In:</label>
@@ -44,6 +47,7 @@ const Personal = ({ setPersonal, handleNext }) => {
             linkedin: e.target.value,
           }))
         }
+        defaultValue={personal.linkedin}
       />
       <br></br>
       <label>GitHub:</label>
@@ -55,6 +59,7 @@ const Personal = ({ setPersonal, handleNext }) => {
             github: e.target.value,
           }))
         }
+        defaultValue={personal.github}
       />
       <br></br>
       <label>Address:</label>
@@ -67,9 +72,8 @@ const Personal = ({ setPersonal, handleNext }) => {
             address: e.target.value,
           }))
         }
-      >
-        Enter you address
-      </textarea>
+        defaultValue={personal.address}
+      ></textarea>
       <button onClick={handleNext}>Next</button>
     </>
   );

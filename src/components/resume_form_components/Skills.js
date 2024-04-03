@@ -15,6 +15,7 @@ const Skills = ({
           <input
             type="text"
             onBlur={(e) => handleBlur(index, e.target.value, setSkills)}
+            defaultValue={skills[index]}
           />
           <button onClick={() => handleRemoveItem(index, setSkills)}>
             Remove
