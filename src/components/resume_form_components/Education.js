@@ -1,3 +1,6 @@
+import { AiOutlinePlus } from "react-icons/ai";
+import { ImBin } from "react-icons/im";
+
 const Education = ({
   education,
   handleBlur,
@@ -22,7 +25,7 @@ const Education = ({
         {education.map((edu, index) => (
           <div key={index}>
             <textarea
-              className="form-control"
+              className="form-control mt-4"
               rows={5}
               cols={50}
               onBlur={(e) => handleBlur(index, e.target.value, setEducation)}
@@ -30,19 +33,25 @@ const Education = ({
               placeholder="Enter about your education..."
             ></textarea>
             <button
-              className="btn btn-danger mt-2"
+              className="btn btn-danger  mt-1 d-block mx-auto"
               onClick={() => handleRemoveItem(index, setEducation)}
             >
-              Remove
+              <ImBin />
             </button>
           </div>
         ))}
       </div>
       <button
-        className="btn btn-warning mt-2"
+        className="btn  mt-4 d-block mx-auto"
         onClick={(e) => handleAddItem(setEducation, e)}
       >
-        Add
+        <AiOutlinePlus
+          style={{
+            fontSize: "44px",
+            color: "orange",
+            fontWeight: "600",
+          }}
+        />
       </button>
       <div
         style={{

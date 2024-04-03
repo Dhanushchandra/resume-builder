@@ -1,3 +1,6 @@
+import { AiOutlinePlus } from "react-icons/ai";
+import { ImBin } from "react-icons/im";
+
 const Skills = ({
   skills,
   handleBlur,
@@ -40,16 +43,22 @@ const Skills = ({
               }}
               onClick={() => handleRemoveItem(index, setSkills)}
             >
-              Remove
+              <ImBin />
             </button>
           </div>
         </div>
       ))}
       <button
-        className="btn btn-warning mt-2"
+        className="btn  mt-4 d-block mx-auto"
         onClick={(e) => handleAddItem(setSkills, e)}
       >
-        Add
+        <AiOutlinePlus
+          style={{
+            fontSize: "44px",
+            color: "orange",
+            fontWeight: "600",
+          }}
+        />
       </button>
       <div
         style={{

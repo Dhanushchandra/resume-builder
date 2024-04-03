@@ -96,9 +96,17 @@ const Personal = ({ personal, setPersonal, handleNext }) => {
           defaultValue={personal.address}
         ></textarea>
         <br></br>
-        <button onClick={handleNext} className="btn btn-primary">
-          Next
-        </button>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <div className=""></div>
+          <button onClick={handleNext} className="btn btn-primary">
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
