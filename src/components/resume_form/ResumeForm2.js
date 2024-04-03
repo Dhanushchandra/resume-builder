@@ -25,6 +25,7 @@ const ResumeForm2 = () => {
   const [projects, setProjects] = useState([]);
   const [education, setEducation] = useState([]);
   const [certifications, setCertifications] = useState([]);
+  const [disabled, setDisabled] = useState(false);
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -39,6 +40,7 @@ const ResumeForm2 = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true);
+    setDisabled(true);
   };
 
   const handleBlur = (index, value, setState) => {
@@ -148,6 +150,7 @@ const ResumeForm2 = () => {
               handleAddItem={handleAddItem}
               handleBack={handleBack}
               handleSubmit={handleSubmit}
+              disabled={disabled}
             />
           </>
         );
@@ -157,8 +160,20 @@ const ResumeForm2 = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>{renderCurrentStep()}</form>
+    <div
+      style={{
+        width: "100%",
+      }}
+    >
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          width: "600px",
+          margin: "auto",
+        }}
+      >
+        {submitted ? null : renderCurrentStep()}
+      </form>
       {submitted && (
         <ResumeDisplay
           personal={personal}

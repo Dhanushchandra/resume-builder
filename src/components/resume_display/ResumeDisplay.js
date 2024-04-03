@@ -17,7 +17,7 @@ const ResumeDisplay = ({
 
   return (
     <div>
-      <h1>------------------------------</h1>
+      {/* <h1>------------------------------</h1>
       <h1>{personal.name}</h1>
       <h1>{personal.phone}</h1>
       <h1>{personal.email}</h1>
@@ -26,7 +26,7 @@ const ResumeDisplay = ({
       <h1>{personal.address}</h1>
       <h1>------------------------------</h1>
       <p>{profile}</p>
-      <h1>------------------------------</h1>
+      <h1>------------------------------</h1> */}
     </div>
   );
 };
