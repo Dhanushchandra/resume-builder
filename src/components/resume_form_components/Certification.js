@@ -1,5 +1,6 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import { ImBin } from "react-icons/im";
+import { IoMdArrowBack } from "react-icons/io";
 
 const Certification = ({
   certifications,
@@ -24,23 +25,27 @@ const Certification = ({
       <div className="form-group">
         <h3>Certification</h3>
         {certifications.map((cert, index) => (
-          <div key={index}>
-            <textarea
-              className="form-control mt-4"
-              rows={5}
-              cols={50}
-              onBlur={(e) => {
-                handleBlur(index, e.target.value, setCertifications);
-              }}
-              defaultValue={certifications[index]}
-              placeholder="Enter about your certification..."
-            ></textarea>
-            <button
-              className="btn btn-danger  mt-1 d-block mx-auto"
-              onClick={() => handleRemoveItem(index, setCertifications)}
-            >
-              <ImBin />
-            </button>
+          <div key={index} className="row">
+            <div className="col-10">
+              <textarea
+                className="form-control mt-4"
+                rows={5}
+                cols={50}
+                onBlur={(e) => {
+                  handleBlur(index, e.target.value, setCertifications);
+                }}
+                defaultValue={certifications[index]}
+                placeholder="Enter about your certification..."
+              ></textarea>
+            </div>
+            <div className="col-2 d-flex justify-content-center align-items-center">
+              <button
+                className="btn btn-danger  mt-1 d-block mx-auto"
+                onClick={() => handleRemoveItem(index, setCertifications)}
+              >
+                <ImBin />
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -69,7 +74,7 @@ const Certification = ({
           disabled={disabled}
           className="btn btn-danger"
         >
-          Back
+          <IoMdArrowBack />
         </button>
         <button onClick={handleSubmit} className="btn btn-primary">
           Submit

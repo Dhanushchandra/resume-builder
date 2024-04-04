@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { GrLinkNext } from "react-icons/gr";
 
 const Personal = ({ personal, setPersonal, handleNext }) => {
   const [imageUrl, setImageUrl] = useState("");
@@ -168,7 +169,7 @@ const Personal = ({ personal, setPersonal, handleNext }) => {
             disabled={!isFormValid}
             className="btn btn-primary"
           >
-            Next
+            <GrLinkNext />
           </button>
         </div>
       </div>

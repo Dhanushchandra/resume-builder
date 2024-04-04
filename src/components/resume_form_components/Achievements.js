@@ -1,5 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import { ImBin } from "react-icons/im";
+import { GrLinkNext } from "react-icons/gr";
+import { IoMdArrowBack } from "react-icons/io";
 
 const Achievements = ({
   achievements,
@@ -23,21 +25,27 @@ const Achievements = ({
       <div className="form-group">
         <h3>Achievements</h3>
         {achievements.map((achievement, index) => (
-          <div key={index}>
-            <textarea
-              className="form-control mt-4"
-              rows={5}
-              cols={50}
-              onBlur={(e) => handleBlur(index, e.target.value, setAchievements)}
-              defaultValue={achievements[index]}
-              placeholder="Enter about your achievement..."
-            />
-            <button
-              className="btn btn-danger  mt-1 d-block mx-auto"
-              onClick={() => handleRemoveItem(index, setAchievements)}
-            >
-              <ImBin />
-            </button>
+          <div key={index} className="row">
+            <div className="col-10">
+              <textarea
+                className="form-control mt-4"
+                rows={5}
+                cols={50}
+                onBlur={(e) =>
+                  handleBlur(index, e.target.value, setAchievements)
+                }
+                defaultValue={achievements[index]}
+                placeholder="Enter about your achievement..."
+              />
+            </div>
+            <div className="col-2 d-flex justify-content-center align-items-center">
+              <button
+                className="btn btn-danger  mt-1 d-block mx-auto"
+                onClick={() => handleRemoveItem(index, setAchievements)}
+              >
+                <ImBin />
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -61,10 +69,10 @@ const Achievements = ({
         }}
       >
         <button onClick={handleBack} className="btn btn-danger">
-          Back
+          <IoMdArrowBack />
         </button>
         <button onClick={handleNext} className="btn btn-primary">
-          Next
+          <GrLinkNext />
         </button>
       </div>
     </div>

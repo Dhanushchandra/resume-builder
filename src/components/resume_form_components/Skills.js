@@ -1,5 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import { ImBin } from "react-icons/im";
+import { GrLinkNext } from "react-icons/gr";
+import { IoMdArrowBack } from "react-icons/io";
 
 const Skills = ({
   skills,
@@ -68,10 +70,10 @@ const Skills = ({
         }}
       >
         <button onClick={handleBack} className="btn btn-danger">
-          Back
+          <IoMdArrowBack />
         </button>
         <button onClick={handleNext} className="btn btn-primary">
-          Next
+          <GrLinkNext />
         </button>
       </div>
     </div>

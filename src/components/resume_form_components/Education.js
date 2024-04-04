@@ -1,5 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import { ImBin } from "react-icons/im";
+import { GrLinkNext } from "react-icons/gr";
+import { IoMdArrowBack } from "react-icons/io";
 
 const Education = ({
   education,
@@ -23,21 +25,25 @@ const Education = ({
       <div className="form-group">
         <h3>Education</h3>
         {education.map((edu, index) => (
-          <div key={index}>
-            <textarea
-              className="form-control mt-4"
-              rows={5}
-              cols={50}
-              onBlur={(e) => handleBlur(index, e.target.value, setEducation)}
-              defaultValue={education[index]}
-              placeholder="Enter about your education..."
-            ></textarea>
-            <button
-              className="btn btn-danger  mt-1 d-block mx-auto"
-              onClick={() => handleRemoveItem(index, setEducation)}
-            >
-              <ImBin />
-            </button>
+          <div key={index} className="row">
+            <div className="col-10">
+              <textarea
+                className="form-control mt-4"
+                rows={5}
+                cols={50}
+                onBlur={(e) => handleBlur(index, e.target.value, setEducation)}
+                defaultValue={education[index]}
+                placeholder="Enter about your education..."
+              ></textarea>
+            </div>
+            <div className="col-2 d-flex justify-content-center align-items-center">
+              <button
+                className="btn btn-danger  mt-1 d-block mx-auto"
+                onClick={() => handleRemoveItem(index, setEducation)}
+              >
+                <ImBin />
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -61,10 +67,10 @@ const Education = ({
         }}
       >
         <button onClick={handleBack} className="btn btn-danger">
-          Back
+          <IoMdArrowBack />
         </button>
         <button onClick={handleNext} className="btn btn-primary">
-          Next
+          <GrLinkNext />
         </button>
       </div>
     </div>

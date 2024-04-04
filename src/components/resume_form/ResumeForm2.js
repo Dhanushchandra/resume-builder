@@ -1,3 +1,5 @@
+import "./resumeform.css";
+
 import { useState } from "react";
 import ResumeDisplay from "../resume_display/ResumeDisplay";
 import Profile from "../resume_form_components/Profile";
@@ -40,11 +42,6 @@ const ResumeForm2 = () => {
       return updatedState;
     });
   };
-
-  // const handleAddItem = (setState, e) => {
-  //   e.preventDefault();
-  //   setState((prevState) => [...prevState, ""]);
-  // };
 
   const handleAddItem = (setState, items, e) => {
     e.preventDefault();
@@ -252,7 +249,7 @@ const ResumeForm2 = () => {
         <div className="tab-content">
           {submitted ? null : (
             <div className="tab-pane fade show active">
-              <form style={{ width: "600px", margin: "auto" }}>
+              <form style={{ width: "1000px", margin: "auto" }}>
                 {renderCurrentStep()}
               </form>
             </div>

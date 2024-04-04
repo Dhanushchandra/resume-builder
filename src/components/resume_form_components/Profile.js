@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { GrLinkNext } from "react-icons/gr";
+import { IoMdArrowBack } from "react-icons/io";
 
 const Profile = ({ profile, setProfile, handleBack, handleNext }) => {
   const [isFormValid, setIsFormValid] = useState(false);
@@ -36,14 +38,14 @@ const Profile = ({ profile, setProfile, handleBack, handleNext }) => {
           }}
         >
           <button onClick={handleBack} className="btn btn-danger">
-            Back
+            <IoMdArrowBack />
           </button>
           <button
             onClick={handleNext}
             disabled={!isFormValid}
             className="btn btn-primary"
           >
-            Next
+            <GrLinkNext />
           </button>
         </div>
       </div>
