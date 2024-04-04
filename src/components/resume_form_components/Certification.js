@@ -46,7 +46,7 @@ const Certification = ({
       </div>
       <button
         className="btn  mt-4 d-block mx-auto"
-        onClick={(e) => handleAddItem(setCertifications, e)}
+        onClick={(e) => handleAddItem(setCertifications, certifications, e)}
       >
         <AiOutlinePlus
           style={{

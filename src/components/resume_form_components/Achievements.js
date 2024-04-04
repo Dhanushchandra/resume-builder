@@ -43,7 +43,7 @@ const Achievements = ({
       </div>
       <button
         className="btn  mt-4 d-block mx-auto"
-        onClick={(e) => handleAddItem(setAchievements, e)}
+        onClick={(e) => handleAddItem(setAchievements, achievements, e)}
       >
         <AiOutlinePlus
           style={{

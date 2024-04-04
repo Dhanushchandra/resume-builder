@@ -1,4 +1,13 @@
+import { useEffect, useState } from "react";
+
 const Profile = ({ profile, setProfile, handleBack, handleNext }) => {
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const isFormFilled = profile;
+    setIsFormValid(isFormFilled);
+  }, [profile]);
+
   return (
     <div
       style={{
@@ -29,7 +38,11 @@ const Profile = ({ profile, setProfile, handleBack, handleNext }) => {
           <button onClick={handleBack} className="btn btn-danger">
             Back
           </button>
-          <button onClick={handleNext} className="btn btn-primary">
+          <button
+            onClick={handleNext}
+            disabled={!isFormValid}
+            className="btn btn-primary"
+          >
             Next
           </button>
         </div>

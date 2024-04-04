@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const Personal = ({ personal, setPersonal, handleNext }) => {
   const [imageUrl, setImageUrl] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const handleImageChange = (e) => {
     if (e.target.files.length > 0) {
@@ -24,6 +25,19 @@ const Personal = ({ personal, setPersonal, handleNext }) => {
       return () => URL.revokeObjectURL(url);
     }
   }, [personal.image]);
+
+  useEffect(() => {
+    // Validate form fields
+    const isFormFilled =
+      personal.name &&
+      personal.phone &&
+      personal.email &&
+      personal.linkedin &&
+      personal.github &&
+      personal.address &&
+      personal.image;
+    setIsFormValid(isFormFilled);
+  }, [personal]);
 
   return (
     <div
@@ -149,7 +163,11 @@ const Personal = ({ personal, setPersonal, handleNext }) => {
           }}
         >
           <div className=""></div>
-          <button onClick={handleNext} className="btn btn-primary">
+          <button
+            onClick={handleNext}
+            disabled={!isFormValid}
+            className="btn btn-primary"
+          >
             Next
           </button>
         </div>

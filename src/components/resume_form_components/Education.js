@@ -43,7 +43,7 @@ const Education = ({
       </div>
       <button
         className="btn  mt-4 d-block mx-auto"
-        onClick={(e) => handleAddItem(setEducation, e)}
+        onClick={(e) => handleAddItem(setEducation, education, e)}
       >
         <AiOutlinePlus
           style={{

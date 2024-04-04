@@ -50,7 +50,7 @@ const Skills = ({
       ))}
       <button
         className="btn  mt-4 d-block mx-auto"
-        onClick={(e) => handleAddItem(setSkills, e)}
+        onClick={(e) => handleAddItem(setSkills, skills, e)}
       >
         <AiOutlinePlus
           style={{

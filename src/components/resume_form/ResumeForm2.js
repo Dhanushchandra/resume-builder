@@ -41,9 +41,16 @@ const ResumeForm2 = () => {
     });
   };
 
-  const handleAddItem = (setState, e) => {
+  // const handleAddItem = (setState, e) => {
+  //   e.preventDefault();
+  //   setState((prevState) => [...prevState, ""]);
+  // };
+
+  const handleAddItem = (setState, items, e) => {
     e.preventDefault();
-    setState((prevState) => [...prevState, ""]);
+    if (items.length === 0 || items[items.length - 1].trim() !== "") {
+      setState((prevState) => [...prevState, ""]);
+    }
   };
 
   const handleRemoveItem = (index, setState) => {

@@ -43,7 +43,7 @@ const Projects = ({
       </div>
       <button
         className="btn  mt-4 d-block mx-auto"
-        onClick={(e) => handleAddItem(setProjects, e)}
+        onClick={(e) => handleAddItem(setProjects, projects, e)}
       >
         <AiOutlinePlus
           style={{
