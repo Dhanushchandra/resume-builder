@@ -1,0 +1,12 @@
+.edu-inp{
+    background-color: #DDDDDD;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+
+
+select{
+    width: 200px;
+    height: 40px;
+}

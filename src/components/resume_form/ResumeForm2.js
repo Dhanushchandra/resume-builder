@@ -9,6 +9,7 @@ import Projects from "../resume_form_components/Projects";
 import Education from "../resume_form_components/Education";
 import Certification from "../resume_form_components/Certification";
 import Personal from "../resume_form_components/PersonalDetails";
+import EducationTemp from "../resume_form_components/Education_Temp";
 
 const ResumeForm2 = () => {
   const [activeTab, setActiveTab] = useState("personal");
@@ -121,6 +122,17 @@ const ResumeForm2 = () => {
             handleNext={() => setActiveTab("certifications")}
           />
         );
+      // return (
+      //   <EducationTemp
+      //     education={education}
+      //     handleBlur={handleBlur}
+      //     setEducation={setEducation}
+      //     handleRemoveItem={handleRemoveItem}
+      //     handleAddItem={handleAddItem}
+      //     handleBack={() => setActiveTab("projects")}
+      //     handleNext={() => setActiveTab("certifications")}
+      //   />
+      // );
       case "certifications":
         return (
           <Certification

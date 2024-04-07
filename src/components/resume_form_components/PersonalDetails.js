@@ -8,7 +8,6 @@ const Personal = ({ personal, setPersonal, handleNext }) => {
   const handleImageChange = (e) => {
     if (e.target.files.length > 0) {
       const file = e.target.files[0];
-
       setPersonal((prev) => ({
         ...prev,
         image: file,
@@ -35,10 +34,53 @@ const Personal = ({ personal, setPersonal, handleNext }) => {
       personal.email &&
       personal.linkedin &&
       personal.github &&
-      personal.address &&
-      personal.image;
+      personal.address;
+
     setIsFormValid(isFormFilled);
   }, [personal]);
+
+  const handleInputChange = (e, field) => {
+    const value = e.target.value;
+
+    if (field === "name") {
+      if (!/^[a-zA-Z\s]+$/.test(value)) {
+        // Only allow alphabetic characters for name
+        return; // Don't update state if name contains non-alphabetic characters
+      }
+      if (value.length > 50) {
+        // Limit the name field to 50 characters
+        return; // Don't update state if the name exceeds the limit
+      }
+      // You may add further validation if needed for the name field
+    }
+
+    if (
+      field === "phone" &&
+      !/^\d+$/.test(value) // Only allow numbers for phone
+    ) {
+      return; // Don't update state if phone contains non-numeric characters
+    }
+    if (
+      (field === "linkedin" || field === "github") &&
+      !isValidURL(value) // Validate URL for LinkedIn and GitHub
+    ) {
+      return; // Don't update state if URL is invalid
+    }
+    setPersonal((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  // Function to check if the URL is valid
+  const isValidURL = (url) => {
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
 
   return (
     <div
@@ -66,87 +108,56 @@ const Personal = ({ personal, setPersonal, handleNext }) => {
           className="form-control"
           placeholder="Enter your name"
           type="text"
-          onChange={(e) =>
-            setPersonal((prev) => ({
-              ...prev,
-              name: e.target.value,
-            }))
-          }
-          defaultValue={personal.name}
+          onChange={(e) => handleInputChange(e, "name")}
+          value={personal.name || ""}
         />
-        <br></br>
+        <br />
         <label>Phone:</label>
         <input
           type="text"
           className="form-control"
           placeholder="Enter your phone"
-          onChange={(e) =>
-            setPersonal((prev) => ({
-              ...prev,
-              phone: e.target.value,
-            }))
-          }
-          defaultValue={personal.phone}
+          onChange={(e) => handleInputChange(e, "phone")}
+          value={personal.phone || ""}
         />
-        <br></br>
+        <br />
         <label>Email:</label>
         <input
           type="text"
           className="form-control"
           placeholder="Enter your email"
-          onChange={(e) =>
-            setPersonal((prev) => ({
-              ...prev,
-              email: e.target.value,
-            }))
-          }
-          defaultValue={personal.email}
+          onChange={(e) => handleInputChange(e, "email")}
+          value={personal.email || ""}
         />
-        <br></br>
+        <br />
         <label>Linked In:</label>
         <input
           type="text"
           className="form-control"
-          placeholder="Enter your linded in link"
-          onChange={(e) =>
-            setPersonal((prev) => ({
-              ...prev,
-              linkedin: e.target.value,
-            }))
-          }
-          defaultValue={personal.linkedin}
+          placeholder="Enter your linked in link"
+          onChange={(e) => handleInputChange(e, "linkedin")}
+          value={personal.linkedin || ""}
         />
-        <br></br>
+        <br />
         <label>GitHub:</label>
         <input
           type="text"
           className="form-control"
           placeholder="Enter your github in link"
-          onChange={(e) =>
-            setPersonal((prev) => ({
-              ...prev,
-              github: e.target.value,
-            }))
-          }
-          defaultValue={personal.github}
+          onChange={(e) => handleInputChange(e, "github")}
+          value={personal.github || ""}
         />
-        <br></br>
+        <br />
         <label>Address:</label>
         <textarea
           className="form-control"
           placeholder="Enter your address"
           cols={40}
           rows={5}
-          onChange={(e) =>
-            setPersonal((prev) => ({
-              ...prev,
-              address: e.target.value,
-            }))
-          }
-          defaultValue={personal.address}
+          onChange={(e) => handleInputChange(e, "address")}
+          value={personal.address || ""}
         ></textarea>
-        <br></br>
-
+        <br />
         <label>Profile Image:</label>
         <input
           type="file"
@@ -154,9 +165,7 @@ const Personal = ({ personal, setPersonal, handleNext }) => {
           onChange={handleImageChange}
           accept="image/*"
         />
-
-        <br></br>
-
+        <br />
         <div
           style={{
             display: "flex",
